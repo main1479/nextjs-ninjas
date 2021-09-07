@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 export const getStaticProps = async () => {
 	const res = await fetch('https://jsonplaceholder.typicode.com/users');
 	const data = await res.json();
@@ -13,6 +14,9 @@ export const getStaticProps = async () => {
 export default function index({ ninjas }) {
 	return (
 		<div className="container">
+			<Head>
+				<title>NinjaList | Ninjas</title>
+			</Head>
 			{ninjas?.map((ninja) => (
 				<Link href={`/ninjas/${ninja.id}`} key={ninja.id}>
 					<a className=" border-l-8 border-white  relative w-full my-10 block py-5 px-10 text-xl font-semibold transition-all text-purple-500 bg-white shadow-lg hover:border-purple-500 rounded">
